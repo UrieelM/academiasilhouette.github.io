@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -19,46 +19,42 @@
             <div class="login-form">
                 <div class="sign-in-htm">
                     <div class="group">
-                        <label for="user" class="label">Usuario</label>
-                        <input id="user" type="text" class="input" required>
+                        <label for="login-user" class="label">Usuario</label>
+                        <input id="login-user" type="text" class="input" required>
                     </div>
                     <div class="group">
-                        <label for="pass" class="label">Contraseña</label>
-                        <input id="pass" type="password" class="input" data-type="password" required>
+                        <label for="login-pass" class="label">Contraseña</label>
+                        <input id="login-pass" type="password" class="input" data-type="password" required>
                     </div>
                     <div class="group">
-                        <input id="check" type="checkbox" class="check" checked>
-                        <label for="check"><span class="icon"></span> Mantener la sesión</label>
-                    </div>
-                    <div class="group">
-                        <input type="submit" class="button" value="Iniciar Sesion"
-                            onclick="window.location.href='index.html'">
+                        <input id="login-btn" type="button" class="button" value="Iniciar Sesion"
+                            onclick="validateForm()">
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
-                        <a href="#forgot">¿Olvidaste la contraseña?</a>
+                        <a href="">¿Olvidaste la contraseña?</a>
                     </div>
                 </div>
                 <div class="sign-up-htm">
                     <div class="group">
-                        <label for="user" class="label">Usuario</label>
-                        <input id="user" type="text" class="input" required>
+                        <label for="signup-user" class="label">Usuario</label>
+                        <input id="signup-user" type="text" class="input" required>
                     </div>
                     <div class="group">
-                        <label for="pass" class="label">Contraseña</label>
-                        <input id="pass" type="password" class="input" data-type="password" required>
+                        <label for="signup-pass" class="label">Contraseña</label>
+                        <input id="signup-pass" type="password" class="input" data-type="password" required>
                     </div>
                     <div class="group">
-                        <label for="pass" class="label">Repite la contraseña</label>
-                        <input id="pass" type="password" class="input" data-type="password">
+                        <label for="signup-pass2" class="label">Repite la contraseña</label>
+                        <input id="signup-pass2" type="password" class="input" data-type="password">
                     </div>
                     <div class="group">
-                        <label for="pass" class="label">Email</label>
-                        <input id="pass" type="text" class="input" required>
+                        <label for="signup-email" class="label">Email</label>
+                        <input id="signup-email" type="text" class="input" required>
                     </div>
                     <div class="group">
-                        <input type="submit" class="button" value="Crear Cuenta"
-                            onclick="window.location.href='index.html'">
+                        <input id="signup-btn" type="button" class="button" value="Crear Cuenta"
+                            onclick="validateForm2()">
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
@@ -69,6 +65,34 @@
         </div>
     </div>
 
+    <script>
+        function validateForm() {
+            var username = document.getElementById("login-user").value;
+            var password = document.getElementById("login-pass").value;
+
+            if (username === "" || password === "") {
+                alert("Por favor, complete todos los campos");
+            } else if (username === "invitado" && password === "12345") {
+                window.location.href = "index.html";
+                alert("Bienvenido "+username);
+            } else {
+                alert("Credenciales incorrectas");
+            }
+        }
+
+        function validateForm2() {
+            var username = document.getElementById("signup-user").value;
+            var password = document.getElementById("signup-pass").value;
+
+            if (username === "" || password === "") {
+                alert("Por favor, complete todos los campos");
+            } else if (username.toLowerCase() === "invitado") {
+                alert("Este usuario ya existe");
+            } else {
+                window.location.href = "index.html";
+            }
+        }
+    </script>
 </body>
 
 </html>
